@@ -16,6 +16,7 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -64,7 +65,6 @@ public class ArticleListActivity extends ActionBarActivity implements
         setContentView(R.layout.activity_article_list);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-
 
        // final View toolbarContainerView = findViewById(R.id.toolbar_container);
 
@@ -161,7 +161,7 @@ public class ArticleListActivity extends ActionBarActivity implements
                             ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition())));
                     Bundle bundle=
                             ActivityOptions
-                                    .makeSceneTransitionAnimation(ArticleListActivity.this, view, ViewCompat.getTransitionName(view))
+                                    .makeSceneTransitionAnimation(ArticleListActivity.this, vh.thumbnailView, ViewCompat.getTransitionName(vh.thumbnailView))
                                     .toBundle();
 //                    startActivity(intent);
 
@@ -212,6 +212,7 @@ public class ArticleListActivity extends ActionBarActivity implements
                     mCursor.getString(ArticleLoader.Query.THUMB_URL),
                     ImageLoaderHelper.getInstance(ArticleListActivity.this).getImageLoader());
             holder.thumbnailView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
+            ViewCompat.setTransitionName(holder.thumbnailView, String.valueOf(R.string.transistion_photo + position));
 
         }
 
@@ -227,12 +228,14 @@ public class ArticleListActivity extends ActionBarActivity implements
         public DynamicHeightNetworkImageView thumbnailView;
         public TextView titleView;
         public TextView subtitleView;
+        public CardView cardView;
 
         public ViewHolder(View view) {
             super(view);
             thumbnailView = (DynamicHeightNetworkImageView) view.findViewById(R.id.thumbnail);
             titleView = (TextView) view.findViewById(R.id.article_title);
             subtitleView = (TextView) view.findViewById(R.id.article_subtitle);
+            cardView = (CardView)view.findViewById(R.id.view);
         }
     }
 }
