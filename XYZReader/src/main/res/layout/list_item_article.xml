@@ -9,6 +9,7 @@
     android:clickable="true"
     android:focusable="true"
     android:id="@+id/view"
+android:elevation="@dimen/card_elevation"
     android:foreground="?selectableItemBackground"
     >
 

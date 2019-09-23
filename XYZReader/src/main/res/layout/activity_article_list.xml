@@ -10,8 +10,8 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="8dp"
 
+android:elevation="@dimen/appbar_elevation"
 
         android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -23,7 +23,8 @@
             android:layout_marginRight="@dimen/list_toolbar_side_margin"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:layout_gravity="bottom">
+            android:layout_gravity="bottom"
+           >
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -48,7 +49,8 @@
             android:paddingTop="@dimen/list_side_margin"
             android:paddingLeft="@dimen/list_side_margin"
             android:paddingRight="@dimen/list_side_margin"
-            android:paddingBottom="28dp" />
+            android:paddingBottom="28dp"
+            />
     </android.support.v4.widget.SwipeRefreshLayout>
 
 
